@@ -25,8 +25,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
-          cache-dependency-path: /tmp/doc-source/pnpm-lock.yaml
 
       - name: Fetch DOC source
         run: |
