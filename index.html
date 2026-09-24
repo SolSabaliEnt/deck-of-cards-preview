@@ -6,7 +6,26 @@
     <meta name="theme-color" content="#082743" />
     <meta name="description" content="DOCC — Deck of Credit Cards. Organize, monitor, and maintain the credit-card relationships you care about." />
 
-    <link rel="icon" type="image/png" href="/media/docc-favicon.png" />
+    <link id="docc-favicon" rel="icon" type="image/png" sizes="64x64" href="/media/docc-favicon.png?v=4" />
+    <script>
+      (() => {
+        const source = new Image()
+        source.src = '/media/docc-favicon.png?v=4'
+        source.onload = () => {
+          const size = Math.min(source.naturalWidth, source.naturalHeight)
+          const inset = Math.round(size * 0.045)
+          const crop = size - inset * 2
+          const canvas = document.createElement('canvas')
+          canvas.width = 64
+          canvas.height = 64
+          const context = canvas.getContext('2d')
+          if (!context) return
+          context.drawImage(source, inset, inset, crop, crop, 0, 0, 64, 64)
+          const icon = document.getElementById('docc-favicon')
+          if (icon) icon.setAttribute('href', canvas.toDataURL('image/png'))
+        }
+      })()
+    </script>
     <link rel="apple-touch-icon" href="/media/docc-apple-touch.png" />
 
     <meta property="og:type" content="website" />
@@ -21,8 +40,8 @@
     <meta name="twitter:image" content="https://doc.ownmypurpose.io/media/docc-social-share.png" />
 
     <title>DOCC — Deck of Credit Cards</title>
-    <script type="module" crossorigin src="/assets/index-Dw7wwN3b.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-30ArS6fh.css">
+    <script type="module" crossorigin src="/assets/index-BbjmCaa7.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BRqWIdQI.css">
   </head>
   <body>
     <div id="root"></div>
